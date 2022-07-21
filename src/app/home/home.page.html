@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  |<h1>Artista</h1>
+  <ion-slides [options]="slideOpt">
+
+    <ion-slide *ngFor ="let artists of artistsFromJson">
+      <ion-avatar>
+        <img src="https://via.placeholder.com/150/0000FF/808080 ?Text=Digital.com">
+        <span>{{artists.name}}</span>
+      </ion-avatar>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>
