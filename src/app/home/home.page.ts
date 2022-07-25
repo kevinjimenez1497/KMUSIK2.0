@@ -41,7 +41,6 @@ export class HomePage {
       })  
     }
     async showSongs(artist){
-      modal.present();
       const songs = await this.musicService.getArtistsTrack(artist.id);
       const modal = await this.modalController.create({
         component: SongsModalPage,
@@ -50,6 +49,6 @@ export class HomePage {
           artist: artist.name
         }
       });
-     
+      modal.present();
     }
 }
