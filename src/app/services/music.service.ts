@@ -6,6 +6,8 @@ import * as dataArtists from "./artists.json";
 })
 export class MusicService {
 
+  header = { 'Access-Control-Request-Heaters': '*'} 
+  
   constructor() { }
 
   getArtists(){
@@ -15,8 +17,19 @@ export class MusicService {
   }
 
   getArtistsFromJson(){
-
     return dataArtists;
-
   }
+
+  getAlbums(){      
+    return fetch("https://music-back-seminario.herokuapp.com/albums",{
+      mode: 'cors',
+      headers: this.header
+      }).then(
+      (response) => response.json()
+    );
+  }
+  getArtistsTrack(artist_id){
+    return []
+  }
+
 }

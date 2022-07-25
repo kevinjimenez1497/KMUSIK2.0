@@ -1,5 +1,6 @@
 ion-avatar{
-    height: 130px;
+    height: 150px;
+    width: 90% ;
 }
 ion-avatar span{
     font-size: 15px;
@@ -8,6 +9,13 @@ ion-slides{
     background-color: var(--slide-color-fondo);
 }
 ion-avatar img{
-    height: 80px;
+    height: 90px;
+    width: 90px;
+}
 
+.square-avatar{
+    --border-radius: 0;   
+}
+.color-fondo{
+    background-color: orange;
 }
