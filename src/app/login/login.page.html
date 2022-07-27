@@ -21,7 +21,7 @@
           (loginForm.get('email').dirty || 
           loginForm.get('email').touched)
         ">
-        {{validation.message}}
+        <h1>{{validation.message}}</h1>
        </div>
       </ng-container>
     </div>
@@ -30,7 +30,10 @@
 
     <ion-item>
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input formControlName="password"></ion-input>
+      <ion-input #passwordEyeRegister  [type]="passwordTypeInput" formControlName="password"></ion-input>
+      <button  item-end  class="btn_eye_icon"  (click)="togglePasswordMode()">
+        <ion-icon  [name]="iconpassword"></ion-icon>
+    </button>
     </ion-item>
     <div>
       <ng-container *ngFor="let validation of validation_messages.password">
@@ -40,7 +43,7 @@
           (loginForm.get('password').dirty || 
           loginForm.get('password').touched)
         ">
-        {{validation.message}}
+        <h1>{{validation.message}}</h1>
        </div>
       </ng-container>
     </div>
@@ -59,7 +62,7 @@
     (click)="goToRegister()"
   >Resgistrate</ion-button>
   </form>
-  {{errorMessage}}
+  <h1>{{errorMessage}}</h1>
 
 </ion-content>
 

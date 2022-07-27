@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup ,Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthenticateService } from '../services/authenticate.service';
 import { Storage } from "@ionic/storage";
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
+  
 })
+
+
 export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
@@ -18,14 +22,15 @@ export class LoginPage implements OnInit {
       { type: "pattern", message: "correo no valido" }
     ],
     password: [
-      { type: "require", message1: "campo no puede estar vacio" },
-      { type: "minLength", message1: "Contraseña debe tener minimo 6 items"}
+      { type: "require", message1: "campo no puede estar vacio" }
     ]
   };
   
 
   errorMessage: any;
-
+  passwordTypeInput  =  'password';
+  iconpassword  =  'eye-off';
+  @ViewChild('passwordEyeRegister') passwordEye;
 
   constructor(private formBuilder: FormBuilder, 
     private authService: AuthenticateService,
@@ -71,5 +76,11 @@ export class LoginPage implements OnInit {
   goToRegister() {
     this.navCtrl.navigateForward("/register");
   }
+
+  togglePasswordMode() {
+    this.passwordTypeInput  =  this.passwordTypeInput  ===  'text'  ?  'password'  :  'text';
+    this.iconpassword  =  this.iconpassword  ===  'eye-off'  ?  'eye'  :  'eye-off';
+    this.passwordEye.el.setFocus();
+}
 
 }
