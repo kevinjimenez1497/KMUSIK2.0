@@ -14,7 +14,7 @@
     artists: any;
     artistsFromJson: any;
     albums: any;
-    currentSong;
+    currentSong: HTMLAudioElement;
     newTime;
 
     song = {
