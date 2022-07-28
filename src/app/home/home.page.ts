@@ -69,7 +69,7 @@
 
       async showSongsAlbum(album){
         const songs = await this.musicService.getArtistsTrack(album.id);
-        //console.log('Canciones',songs);
+        console.log('Canciones album',songs);
         const modal = await this.modalController.create({
           component: SongsModalPage,
           componentProps: {

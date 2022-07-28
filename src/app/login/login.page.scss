@@ -12,6 +12,7 @@ ion-toolbar{
 }
 ng-container{
   background-color: red;
+  
 }
 .btn_eye_icon{
   position: absolute;
@@ -30,5 +31,7 @@ ng-container{
 ion-content h1{
   font-style: italic;
   color: red;
+  font-size: small;
+  margin-left: 20px;
 }
 

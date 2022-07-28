@@ -16,13 +16,14 @@ import { Storage } from "@ionic/storage";
 export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
+
   validation_messages = {
     email: [
-      { type: "require", message: "campo no puede estar vacio" },
+      { type: "required", message: "campo no puede estar vacio" },
       { type: "pattern", message: "correo no valido" }
     ],
     password: [
-      { type: "require", message1: "campo no puede estar vacio" }
+      { type: "required", message1: "campo no puede estar vacio" },
     ]
   };
   
