@@ -1,7 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="end">
+    <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="openSearchodal()" ><ion-icon name="search-outline"> </ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -11,7 +14,7 @@
 
     <ion-slide *ngFor ="let artists of artistsFromJson">
       <ion-avatar (click)="showSongs(artists)">
-        <img src={{artists.images[2].url}}>
+        <img src={{artists.images[2].url}}><br>
         <span>{{artists.name}}</span>
       </ion-avatar>
     </ion-slide>
@@ -22,7 +25,7 @@
 
     <ion-slide *ngFor ="let album of albums">
       <ion-avatar (click)="showSongs(album)" class="square-avatar">
-        <img src={{album.image}}/>
+        <img src={{album.image}}/><br>
         <span>{{album.name}}</span>
       </ion-avatar>
     </ion-slide>

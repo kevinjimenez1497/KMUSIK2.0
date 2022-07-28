@@ -2,6 +2,7 @@
   import { MusicService } from '../services/music.service';
   import {ModalController} from '@ionic/angular';
   import {SongsModalPage } from '../songs-modal/songs-modal.page';   
+  import { SearchModalPage } from '../search-modal/search-modal.page';
 
 
   @Component({
@@ -93,5 +94,11 @@
           }
           return minutes + ":" + seconds
         }
+      }
+      async openSearchodal(){
+        const modal = await this.modalController.create({
+          component: SearchModalPage
+        });
+        modal.present();
       }
   }
