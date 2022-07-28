@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
@@ -11,6 +12,24 @@ import { AuthenticateService } from '../services/authenticate.service';
 })
 export class RegisterPage implements OnInit {
   registerForm: FormGroup;
+
+  validation_messages = {
+    email: [
+      { type: "required", message: "campo no puede estar vacio" },
+      { type: "pattern", message: "correo no valido" }
+    ],
+    password: [
+      { type: "required", message1: "campo no puede estar vacio" }
+    ],
+    name: [
+      { type: "required", message2: "Se requiere al menos 1 nombre" }
+    ],
+    last_name: [
+      { type: "required", message3: "Debe digitar al menos 1 apellido" }
+    ]
+    
+  };
+
   constructor(
     private formBuilder: FormBuilder,
     private navCtrl: NavController,
@@ -18,14 +37,14 @@ export class RegisterPage implements OnInit {
     private authService: AuthenticateService
   ) {
     this.registerForm = this.formBuilder.group({
-      nombre: new FormControl(
+      name: new FormControl(
         "",
         Validators.compose([
           Validators.required,
           Validators.pattern("^[a-zA-Z]+$")
         ])
       ),
-      apellido: new FormControl(
+      last_name: new FormControl(
         "",
         Validators.compose([
           Validators.required, 
@@ -53,7 +72,7 @@ export class RegisterPage implements OnInit {
   }
 
   register(registerFormValues) {
-    this.authService.registerUser(registerFormValues).then(() => {
+    this.authService.registerUser(registerFormValues).subscribe((resp: HttpResponse <any>) => {
       this.navCtrl.navigateBack("/login");
     });
   }

@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 @Injectable({
@@ -5,7 +6,13 @@ import { Storage } from '@ionic/storage';
 })
 export class AuthenticateService {
 
-  constructor(private storage: Storage) { 
+  header = { 'Access-Control-Request-Heaters': '*'} 
+  url_server ="https://music-back-seminario.herokuapp.com/"
+  httpHeader = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  }
+
+  constructor(private storage: Storage, private http: HttpClient) { 
     this.storage.create();
   }
 
@@ -28,10 +35,13 @@ export class AuthenticateService {
   }
 
   registerUser(userData) {
-    userData.password = btoa(userData.password); // encriptar contraseña
-    return this.storage.set("user", userData)
+    //userData.password = btoa(userData.password); // encriptar contraseña
+    //return this.storage.set("user", userData) 
     
-
+    let params = {
+      "user":userData
+    }
+    return this.http.post(`${this.url_server}signup`,params,this.httpHeader)
   }
 
 }
