@@ -30,6 +30,8 @@ export class AuthenticateService {
   registerUser(userData) {
     userData.password = btoa(userData.password); // encriptar contraseña
     return this.storage.set("user", userData)
+    
+
   }
 
 }

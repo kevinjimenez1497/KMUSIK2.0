@@ -28,7 +28,7 @@ export class RegisterPage implements OnInit {
       apellido: new FormControl(
         "",
         Validators.compose([
-          Validators.required,
+          Validators.required, 
           Validators.pattern("^[a-zA-Z]+$")
         ])
       ),

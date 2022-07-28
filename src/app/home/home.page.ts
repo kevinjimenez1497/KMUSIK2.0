@@ -67,6 +67,22 @@
         return await modal.present();
       }
 
+      async showSongsAlbum(album){
+        const songs = await this.musicService.getArtistsTrack(album.id);
+        //console.log('Canciones',songs);
+        const modal = await this.modalController.create({
+          component: SongsModalPage,
+          componentProps: {
+            songs: songs,
+            album: album.name
+          }
+        });
+        modal.onDidDismiss().then( dataReturned =>{
+          this.song = dataReturned.data ;
+        });
+        return await modal.present();
+      }
+
       play(){
         this.currentSong = new Audio(this.song.preview_url);
         this.currentSong.play();

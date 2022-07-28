@@ -24,7 +24,7 @@
   <ion-slides [options]="slideOpt">
 
     <ion-slide *ngFor ="let album of albums">
-      <ion-avatar (click)="showSongs(album)" class="square-avatar">
+      <ion-avatar (click)="showSongsAlbum(album)" class="square-avatar">
         <img src={{album.image}}/><br>
         <span>{{album.name}}</span>
       </ion-avatar>
